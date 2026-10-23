@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "experiments": [
+    {"id": "qwen3_8b.uno(4,1,4)_t1", "adapter": "nano/uno", "curve": "uno"},
+    {"id": "qwen3_8b.uno(8,1,8)_t1", "adapter": "nano/uno", "curve": "uno"},
+    {"id": "qwen3_8b.uno(16,1,16)_t1", "adapter": "nano/uno", "curve": "uno"},
+    {"id": "qwen3_8b.uno(16,32,32)_t1", "adapter": "nano/uno", "curve": "uno"},
+    {"id": "qwen3_8b.uno(16,32,60)_t1", "adapter": "nano/uno", "curve": "uno"},
+    {"id": "qwen3_8b.ar_t1", "adapter": "nano/ar", "curve": "ar"},
+    {"id": "qwen3_8b.eagle3(3,1,4)_t1", "adapter": "sglang/eagle3", "curve": "eagle3"},
+    {"id": "qwen3_8b.eagle3(7,1,8)_t1", "adapter": "sglang/eagle3", "curve": "eagle3"},
+    {"id": "qwen3_8b.eagle3(15,1,16)_t1", "adapter": "sglang/eagle3", "curve": "eagle3"},
+    {"id": "qwen3_8b.eagle3(7,10,32)_t1", "adapter": "sglang/eagle3", "curve": "eagle3"},
+    {"id": "qwen3_8b.eagle3(7,10,60)_t1", "adapter": "sglang/eagle3", "curve": "eagle3"},
+    {"id": "qwen3_8b.dflash(4,1,4)_t1", "adapter": "sglang/dflash", "curve": "dflash"},
+    {"id": "qwen3_8b.dflash(8,1,8)_t1", "adapter": "sglang/dflash", "curve": "dflash"},
+    {"id": "qwen3_8b.dflash(16,1,16)_t1", "adapter": "sglang/dflash", "curve": "dflash"}
+  ]
+}

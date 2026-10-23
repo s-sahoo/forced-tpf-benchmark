@@ -1,0 +1,10 @@
+{
+  "snapshot_kind": "vendored_modified_source",
+  "upstream": "https://github.com/vllm-project/vllm.git",
+  "upstream_branch": "main",
+  "base_commit": "811622c410c2f1baf2fa7056ca19753264b95815",
+  "base_commit_date": "2026-08-05T23:05:14+00:00",
+  "base_commit_subject": "[Refactor][PCP] Make PCPManager construction extensible (#50066)",
+  "local_changes": "Benchmark-only DiffusionGemma forced-TPF scheduling and per-sequence dLLM TPF output transport.",
+  "vendored_at_utc": "2026-08-06"
+}

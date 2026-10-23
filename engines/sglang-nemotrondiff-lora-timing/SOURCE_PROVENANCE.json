@@ -1,0 +1,9 @@
+{
+  "snapshot_kind": "vendored_modified_source",
+  "upstream": "https://github.com/hutm/sglang.git",
+  "base_commit": "ce4286ed0aa1a242e79f36c493f31140217feff9",
+  "base_commit_date": "2026-05-26T20:37:10+00:00",
+  "base_commit_subject": "[DLLM] Add LoRA-aware LinearSpec execution",
+  "local_changes": "Nemotron LinearSpec-LoRA forced-TPF controls, exact-cohort admission and CUDA-graph handling, decode timing, and per-sequence forward-count metadata transport.",
+  "vendored_at_utc": "2026-08-06"
+}

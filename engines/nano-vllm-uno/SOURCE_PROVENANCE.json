@@ -1,0 +1,11 @@
+{
+  "snapshot_kind": "vendored_clean_source",
+  "upstream": "https://github.com/drproduck/nano-vllm-uno.git",
+  "upstream_branch": "main",
+  "vendored_commit": "d08f6fcb329ad7dfc1e5ab75f23125f5ba16a7a0",
+  "vendored_commit_date": "2026-08-09T01:02:38+00:00",
+  "vendored_commit_subject": "Add benchmark-friendly generation options",
+  "local_changes": "None. The snapshot is the exact committed source, including benchmark-friendly generation options, forced-tree fixes, and FP8 support.",
+  "modified_files": [],
+  "vendored_at_utc": "2026-08-09"
+}

@@ -1,0 +1,20 @@
+# Python-generated files
+**/__pycache__/
+*.py[cod]
+.venv/
+.venvs/
+
+# Local benchmark artifacts
+checkpoints/
+logs/
+profiles/
+experiments/
+tmp/
+**/runs/
+results/
+**/results/
+*.log
+.vscode/
+AGENTS.md
+/slurm-*.out
+/slurm-*.err

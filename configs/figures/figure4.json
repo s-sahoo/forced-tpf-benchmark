@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "experiments": [
+    {"id": "bbq_8b.uno(4,1,4)_t1", "adapter": "nano/uno", "curve": "uno"},
+    {"id": "bbq_8b.uno(8,1,8)_t1", "adapter": "nano/uno", "curve": "uno"},
+    {"id": "bbq_8b.uno(16,1,16)_t1", "adapter": "nano/uno", "curve": "uno"},
+    {"id": "bbq_8b.uno(8,16,16)_t1", "adapter": "nano/uno", "curve": "uno"},
+    {"id": "bbq_8b.uno(16,32,32)_t1", "adapter": "nano/uno", "curve": "uno"},
+    {"id": "bbq_8b.uno(16,64,64)_t1", "adapter": "nano/uno", "curve": "uno"},
+    {"id": "bbq_8b.ar_t1", "adapter": "nano/ar", "curve": "ar"},
+    {"id": "nemotron_diffusion_14b.linearspec(32,1,32)_t1", "adapter": "sglang/nemotron", "curve": "nemotron"},
+    {"id": "diffusion_gemma_26b.diffusion(256,1,256)_t1", "adapter": "vllm/diffgemma", "curve": "diffgemma"}
+  ]
+}

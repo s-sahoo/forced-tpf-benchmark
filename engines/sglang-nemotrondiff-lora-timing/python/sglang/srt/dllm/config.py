@@ -1,0 +1,107 @@
+from typing import Any
+
+from sglang.srt.configs.model_config import ModelConfig
+from sglang.srt.server_args import ServerArgs
+
+
+def load_dllm_algorithm_config(algorithm_config_path: str | None) -> dict[str, Any]:
+    if algorithm_config_path is None:
+        return {}
+
+    try:
+        import yaml
+    except ImportError:
+        raise ImportError(
+            "Please install PyYAML to use YAML config files. " "`pip install pyyaml`"
+        )
+    with open(algorithm_config_path, "r") as f:
+        return yaml.safe_load(f) or {}
+
+
+def should_defer_cuda_graph_capture(server_args: ServerArgs) -> bool:
+    if server_args.dllm_algorithm is None:
+        return False
+
+    algorithm_config = load_dllm_algorithm_config(server_args.dllm_algorithm_config)
+    return bool(algorithm_config.get("lora_path"))
+
+
+class DllmConfig:
+    def __init__(
+        self,
+        algorithm: str,
+        algorithm_config: dict[str, Any],
+        block_size: int,
+        mask_id: int,
+        max_running_requests: int,
+        max_steps: int,
+        causal_context: bool = False,
+    ):
+        self.algorithm = algorithm
+        self.algorithm_config = algorithm_config
+        self.block_size = block_size
+        self.mask_id = mask_id
+        self.max_running_requests = max_running_requests
+        self.max_steps = max_steps
+        # If True, the prefix KV cache is built with causal attention (matches
+        # HF's causal_context=True in generate_with_prefix_cache_block_diff).
+        # Required for Nemotron-Labs-Diffusion-Exp-Ministral-8B-Instruct; leave False
+        # for bidirectional-prefix models like NVRDiff / LLaDA2.
+        self.causal_context = causal_context
+
+    @staticmethod
+    def from_server_args(
+        server_args: ServerArgs,
+    ):
+        if server_args.dllm_algorithm is None:
+            return None
+
+        model_config = ModelConfig.from_server_args(
+            server_args,
+            model_path=server_args.model_path,
+            model_revision=server_args.revision,
+        )
+        DLLM_PARAMS = {
+            "LLaDA2MoeModelLM": {"block_size": 32, "mask_id": 156895},
+            "SDARForCausalLM": {"block_size": 4, "mask_id": 151669},
+            "SDARMoeForCausalLM": {"block_size": 4, "mask_id": 151669},
+            "DiffEncoderModel": {"block_size": 32, "mask_id": 151662},
+            "NemotronLabsDiffusionModel": {"block_size": 32, "mask_id": 100},
+        }
+
+        arch = model_config.hf_config.architectures[0]
+        if arch in DLLM_PARAMS:
+            params = DLLM_PARAMS[arch]
+            block_size = params["block_size"]
+            mask_id = params["mask_id"]
+        else:
+            raise RuntimeError(f"Unknown diffusion LLM: {arch}")
+
+        algorithm_config = load_dllm_algorithm_config(server_args.dllm_algorithm_config)
+
+        # Parse common algorithm configurations
+        block_size = algorithm_config.get("block_size", block_size)
+
+        max_steps = algorithm_config.get("max_steps", block_size)
+
+        causal_context = algorithm_config.get("causal_context", False)
+
+        # Match ModelRunner's local request-pool capacity. Ordinary DP launches
+        # independent replicas and preserves the CLI cap for every replica;
+        # DP-attention partitions one model runner and divides the cap.
+        if server_args.max_running_requests is not None:
+            max_running_requests = server_args.max_running_requests // (
+                server_args.dp_size if server_args.enable_dp_attention else 1
+            )
+        else:
+            max_running_requests = 1
+
+        return DllmConfig(
+            algorithm=server_args.dllm_algorithm,
+            algorithm_config=algorithm_config,
+            block_size=block_size,
+            mask_id=mask_id,
+            max_running_requests=max_running_requests,
+            max_steps=max_steps,
+            causal_context=causal_context,
+        )

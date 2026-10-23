@@ -1,0 +1,183 @@
+{
+  "schema_version": 3,
+  "description": "Shared paper workload and engine-ready forced-TPF experiment catalog.",
+  "benchmark": {
+    "input_len": 1024,
+    "output_len": 8192,
+    "batch_sizes": [1, 2, 4, 8, 16, 32, 64, 128],
+    "top_p": 0.95,
+    "top_k": 50,
+    "timed_repetitions": 3
+  },
+  "qwen3_8b": {
+    "ar_t1": {
+      "parameters": {"temperature": 1.0}
+    },
+    "uno(4,1,4)_t1": {
+      "engine_forced_tpf": 1.95,
+      "parameters": {"temperature": 1.0, "block_size": 4}
+    },
+    "uno(8,1,8)_t1": {
+      "engine_forced_tpf": 2.47,
+      "parameters": {"temperature": 1.0, "block_size": 8}
+    },
+    "uno(16,1,16)_t1": {
+      "engine_forced_tpf": 2.71,
+      "parameters": {"temperature": 1.0, "block_size": 16}
+    },
+    "uno(16,32,32)_t1": {
+      "engine_forced_tpf": 2.98,
+      "parameters": {
+        "temperature": 1.0,
+        "block_size": 16,
+        "tree_candidate_top_k": 32,
+        "tree_verify_size": 32
+      }
+    },
+    "uno(16,32,60)_t1": {
+      "engine_forced_tpf": 3.05,
+      "parameters": {
+        "temperature": 1.0,
+        "block_size": 16,
+        "tree_candidate_top_k": 32,
+        "tree_verify_size": 60
+      }
+    },
+    "eagle3(3,1,4)_t1": {
+      "engine_forced_tpf": 2.08,
+      "parameters": {
+        "temperature": 1.0,
+        "block_size": 4,
+        "speculative_num_steps": 3,
+        "speculative_eagle_topk": 1,
+        "speculative_num_draft_tokens": 4
+      }
+    },
+    "eagle3(7,1,8)_t1": {
+      "engine_forced_tpf": 2.24,
+      "parameters": {
+        "temperature": 1.0,
+        "block_size": 8,
+        "speculative_num_steps": 7,
+        "speculative_eagle_topk": 1,
+        "speculative_num_draft_tokens": 8
+      }
+    },
+    "eagle3(15,1,16)_t1": {
+      "engine_forced_tpf": 2.23,
+      "parameters": {
+        "temperature": 1.0,
+        "block_size": 8,
+        "speculative_num_steps": 15,
+        "speculative_eagle_topk": 1,
+        "speculative_num_draft_tokens": 16
+      }
+    },
+    "eagle3(7,10,32)_t1": {
+      "engine_forced_tpf": 3.24,
+      "parameters": {
+        "temperature": 1.0,
+        "block_size": 8,
+        "speculative_num_steps": 7,
+        "speculative_eagle_topk": 10,
+        "speculative_num_draft_tokens": 32
+      }
+    },
+    "eagle3(7,10,60)_t1": {
+      "engine_forced_tpf": 3.43,
+      "parameters": {
+        "temperature": 1.0,
+        "block_size": 8,
+        "speculative_num_steps": 7,
+        "speculative_eagle_topk": 10,
+        "speculative_num_draft_tokens": 60
+      }
+    },
+    "dflash(4,1,4)_t1": {
+      "engine_forced_tpf": 2.07,
+      "parameters": {"temperature": 1.0, "block_size": 4}
+    },
+    "dflash(8,1,8)_t1": {
+      "engine_forced_tpf": 2.42,
+      "parameters": {"temperature": 1.0, "block_size": 8}
+    },
+    "dflash(16,1,16)_t1": {
+      "engine_forced_tpf": 2.74,
+      "parameters": {"temperature": 1.0, "block_size": 16}
+    }
+  },
+  "bbq_8b": {
+    "ar_t1": {
+      "parameters": {"temperature": 1.0}
+    },
+    "uno(4,1,4)_t1": {
+      "engine_forced_tpf": 1.8285,
+      "parameters": {"temperature": 1.0, "block_size": 4}
+    },
+    "uno(8,1,8)_t1": {
+      "engine_forced_tpf": 2.23,
+      "parameters": {"temperature": 1.0, "block_size": 8}
+    },
+    "uno(16,1,16)_t1": {
+      "engine_forced_tpf": 2.30,
+      "parameters": {"temperature": 1.0, "block_size": 16}
+    },
+    "uno(8,16,16)_t1": {
+      "engine_forced_tpf": 2.41,
+      "parameters": {
+        "temperature": 1.0,
+        "block_size": 8,
+        "tree_candidate_top_k": 16,
+        "tree_verify_size": 16
+      }
+    },
+    "uno(16,32,32)_t1": {
+      "engine_forced_tpf": 2.72,
+      "parameters": {
+        "temperature": 1.0,
+        "block_size": 16,
+        "tree_candidate_top_k": 32,
+        "tree_verify_size": 32
+      }
+    },
+    "uno(16,64,64)_t1": {
+      "engine_forced_tpf": 2.53,
+      "parameters": {
+        "temperature": 1.0,
+        "block_size": 16,
+        "tree_candidate_top_k": 64,
+        "tree_verify_size": 64
+      }
+    },
+    "uno(16,64,32)_t1": {
+      "engine_forced_tpf": 2.62,
+      "parameters": {
+        "temperature": 1.0,
+        "block_size": 16,
+        "tree_candidate_top_k": 64,
+        "tree_verify_size": 32
+      }
+    },
+    "uno(16,128,64)_t1": {
+      "engine_forced_tpf": 2.59,
+      "parameters": {
+        "temperature": 1.0,
+        "block_size": 16,
+        "tree_candidate_top_k": 128,
+        "tree_verify_size": 64
+      }
+    }
+  },
+  "nemotron_diffusion_14b": {
+    "linearspec(32,1,32)_t1": {
+      "engine_forced_tpf": 5.807142857,
+      "parameters": {"temperature": 1.0, "block_size": 32}
+    }
+  },
+  "diffusion_gemma_26b": {
+    "diffusion(256,1,256)_t1": {
+      "engine_forced_tpf": 16.8,
+      "parameters": {"temperature": 1.0, "block_size": 256}
+    }
+  }
+}

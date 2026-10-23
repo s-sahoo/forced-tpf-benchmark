@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "experiments": [
+    {"id": "qwen3_8b.uno(4,1,4)_t1", "adapter": "nano/uno", "curve": "nano_uno"},
+    {"id": "qwen3_8b.uno(16,32,60)_t1", "adapter": "nano/uno", "curve": "nano_uno"},
+    {"id": "qwen3_8b.ar_t1", "adapter": "nano/ar", "curve": "nano_ar"},
+    {"id": "qwen3_8b.ar_t1", "adapter": "sglang/ar", "curve": "sglang_ar"}
+  ]
+}

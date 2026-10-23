@@ -1,0 +1,20 @@
+{
+  "snapshot_kind": "vendored_modified_source",
+  "upstream": "https://github.com/sgl-project/sglang.git",
+  "base_commit": "3d3ba4f7468764a056b211c6fd6e2fdf4b9ba030",
+  "local_changes": "Forced-TPF acceptance simulation, DSpark confidence auditing, the EAGLE norm-before-residual compatibility fix, and opt-in non-speculative AR decode timing.",
+  "component_provenance": {
+    "ar_decode_timing": {
+      "source_snapshot_base_commit": "14bd315d6ef8f3ce71f21f127363769a404a9bf0",
+      "source_snapshot_local_changes": "Opt-in autoregressive decode timing instrumentation.",
+      "ported_files": [
+        "python/sglang/srt/managers/scheduler.py",
+        "python/sglang/srt/managers/tp_worker.py",
+        "python/sglang/srt/managers/utils.py",
+        "python/sglang/srt/model_executor/model_runner.py",
+        "python/sglang/srt/model_executor/runner_backend/full_cuda_graph_backend.py"
+      ],
+      "migration_note": "The timing delta was ported onto this snapshot and guarded so speculative target-verify and draft paths cannot enable it."
+    }
+  }
+}

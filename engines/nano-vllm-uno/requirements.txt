@@ -1,0 +1,15 @@
+# Core inference runtime. Install a CUDA-compatible PyTorch build for the
+# target platform before building FlashAttention when prebuilt wheels are not
+# available.
+torch>=2.7,<3
+transformers>=4.53,<6
+safetensors>=0.5,<1
+huggingface-hub>=0.34,<2
+numpy>=2.3,<3
+tqdm>=4.67,<5
+xxhash>=3.5,<4
+triton>=3.3,<4
+flash-attn>=2.8.3,<3
+fastapi>=0.115,<1
+pydantic>=2.7,<3
+uvicorn>=0.30,<1
